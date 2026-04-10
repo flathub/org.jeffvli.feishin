@@ -118,11 +118,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: ad13fea033c32ee9173235c0d46fea56d72fd13e
-        tag: v1.10.0
+        commit: 3c442a2d4034f8f90ff64ca296423bc7e89bf87d
+        tag: v1.11.0
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.10.0/org.jeffvli.feishin.metainfo.xml
-        sha256: 5167f851a364897a93b6222f7c082d3662f270142d10d1c9a22786ee591bf2ee
+        url: https://github.com/jeffvli/feishin/releases/download/v1.11.0/org.jeffvli.feishin.metainfo.xml
+        sha256: 14e10aa6e65702369eb5378b1e83b0e4d3b442ed1440e09601785b44b6381672
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
