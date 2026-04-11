@@ -17,13 +17,15 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --share=network
-  - --filesystem=xdg-music
-  - --filesystem=xdg-run/pipewire-0:ro
+  # Discord Rich Presence
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # MPRIS media player interface
   - --own-name=org.mpris.MediaPlayer2.Feishin
+  # Secret store (server logins)
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.kde.kwalletd5
-  - --talk-name=org.kde.StatusNotifierWatcher
+  # Use system cursor theme
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
 
 cleanup:
@@ -146,4 +148,6 @@ modules:
             for i in {0..9}; do
                 test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
             done
+          # Keep tray icon temp files in the app runtime dir so GNOME can resolve them without needing /tmp access
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - zypak-wrapper /app/main/feishin "$@"
