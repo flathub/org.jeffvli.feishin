@@ -17,13 +17,17 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --share=network
-  - --filesystem=xdg-music
-  - --filesystem=xdg-run/pipewire-0:ro
+  # Discord Rich Presence
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  # For Tray icon
+  - --filesystem=/tmp:create # GNOME specific
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # MPRIS media player interface
   - --own-name=org.mpris.MediaPlayer2.Feishin
+  # Secret store (server logins)
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.kde.kwalletd5
-  - --talk-name=org.kde.StatusNotifierWatcher
+  # Use system cursor theme
   - --env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons
 
 cleanup:
