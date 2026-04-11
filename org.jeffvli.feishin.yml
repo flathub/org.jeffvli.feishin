@@ -19,8 +19,6 @@ finish-args:
   - --share=network
   # Discord Rich Presence
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
-  # For Tray icon
-  - --filesystem=/tmp:create # GNOME specific
   - --talk-name=org.kde.StatusNotifierWatcher
   # MPRIS media player interface
   - --own-name=org.mpris.MediaPlayer2.Feishin
@@ -150,4 +148,6 @@ modules:
             for i in {0..9}; do
                 test -S $XDG_RUNTIME_DIR/discord-ipc-$i || ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
             done
+          # Keep tray icon temp files in the app runtime dir so GNOME can resolve them without needing /tmp access
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
           - zypak-wrapper /app/main/feishin "$@"
