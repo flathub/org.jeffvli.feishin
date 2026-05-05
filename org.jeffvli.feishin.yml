@@ -1,9 +1,9 @@
 app-id: org.jeffvli.feishin
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: "25.08"
+base-version: '25.08'
 command: feishin
 separate-locales: false
 
@@ -133,8 +133,8 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-10.33.0.tgz
-        sha256: bfcc1bcbad279b13a516c446a75b3c58b6904b45d57a1951411015e50b751a80
+        url: https://registry.npmjs.org/pnpm/-/pnpm-10.33.3.tgz
+        sha256: 3e2a9063122a9b4991b336ca90163c820b8e8ac5f450fb3c9b0bd5694f94366f
         x-checker-data:
           type: json
           url: https://registry.npmjs.org/pnpm/latest
