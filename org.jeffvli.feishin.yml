@@ -100,6 +100,7 @@ modules:
     subdir: main
     build-commands:
       - ln ../pnpm/bin/pnpm.cjs ../pnpm/bin/pnpm
+      - chmod +x ../pnpm/bin/pnpm
       - pnpm install --frozen-lockfile --offline
       - pnpm run build
       - npx electron-builder --linux dir
