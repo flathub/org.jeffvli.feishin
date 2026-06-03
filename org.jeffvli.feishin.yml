@@ -120,11 +120,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: 34314bdf467ee942f30d24d1498d103239256ad1
-        tag: v1.12.1
+        commit: b9312d86fd6b086f86cef2a9af42a3ba8ce493bb
+        tag: v1.13.0
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.12.1/org.jeffvli.feishin.metainfo.xml
-        sha256: 2bf51ad8cf7eb5bb80461330d43720b387f27c74925acc04a0e1ffe37badc322
+        url: https://github.com/jeffvli/feishin/releases/download/v1.13.0/org.jeffvli.feishin.metainfo.xml
+        sha256: 43c2d3494324c6087cc555b8681e99e917dbcfe0315c2725b67eea2b18e568de
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
@@ -133,8 +133,8 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-10.33.0.tgz
-        sha256: bfcc1bcbad279b13a516c446a75b3c58b6904b45d57a1951411015e50b751a80
+        url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.1.tgz
+        sha256: de7a5c1bed8301805183a87997fe1720cd5caefb57be838535a4bfc4a1596959
         x-checker-data:
           type: json
           url: https://registry.npmjs.org/pnpm/latest
