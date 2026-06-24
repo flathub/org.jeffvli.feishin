@@ -85,8 +85,8 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
-            commit: bbb3c7f1570a4a021e52683f3fbdf74fe492ae84
-            tag: 0.17.4
+            commit: 4a05d8127f525943ebf45fdc6497c9e665947f0d
+            tag: 0.17.5
         post-install:
           - install -Dm0644 COPYING -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}/libass
   - name: feishin
