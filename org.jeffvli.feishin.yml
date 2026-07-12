@@ -85,8 +85,8 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
-            commit: bbb3c7f1570a4a021e52683f3fbdf74fe492ae84
-            tag: 0.17.4
+            commit: 4a05d8127f525943ebf45fdc6497c9e665947f0d
+            tag: 0.17.5
         post-install:
           - install -Dm0644 COPYING -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}/libass
   - name: feishin
@@ -120,11 +120,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: b9312d86fd6b086f86cef2a9af42a3ba8ce493bb
-        tag: v1.13.0
+        commit: ad745b36915dd6668d6a2d3e39a5a2be594d12b3
+        tag: v1.14.0
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.13.0/org.jeffvli.feishin.metainfo.xml
-        sha256: 43c2d3494324c6087cc555b8681e99e917dbcfe0315c2725b67eea2b18e568de
+        url: https://github.com/jeffvli/feishin/releases/download/v1.14.0/org.jeffvli.feishin.metainfo.xml
+        sha256: f6b7b52365d3a4448620b05ef9234da4c213073e88d2dcdac053caf5757f4058
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
