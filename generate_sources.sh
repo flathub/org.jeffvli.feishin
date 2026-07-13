@@ -20,7 +20,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run flatpak-node-generator
-flatpak-node-generator pnpm "$LOCKFILE"
+flatpak-node-generator pnpm "$LOCKFILE" --pnpm-store-version v11
 
 # Remove the lockfile
 rm "$LOCKFILE"

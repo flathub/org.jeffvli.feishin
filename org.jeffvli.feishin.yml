@@ -1,9 +1,9 @@
 app-id: org.jeffvli.feishin
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '25.08'
+base-version: "25.08"
 command: feishin
 separate-locales: false
 
@@ -95,14 +95,15 @@ modules:
       append-path: /usr/lib/sdk/node24/bin:/run/build/feishin/pnpm/bin
       env:
         XDG_CACHE_HOME: /run/build/feishin/flatpak-node/cache
-        npm_config_store_dir: /run/build/feishin/flatpak-node/pnpm-store
+        PNPM_CONFIG_STORE_DIR: /run/build/feishin/flatpak-node/pnpm-store
         npm_config_nodedir: /usr/lib/sdk/node24
     subdir: main
     build-commands:
       - ln ../pnpm/bin/pnpm.cjs ../pnpm/bin/pnpm
-      - pnpm install --frozen-lockfile --offline
+      - chmod +x ../pnpm/bin/pnpm
+      - pnpm install --frozen-lockfile --offline --config.trustLockfile=true
       - pnpm run build
-      - npx electron-builder --linux dir
+      - npx electron-builder --linux dir --config.electronVersion=41.7.1 --config.electronDist=../flatpak-node/cache/electron
       - |
         build_dir=dist/linux*unpacked
         for i in 128x128 256x256 512x512; do
@@ -133,8 +134,13 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-10.33.0.tgz
-        sha256: bfcc1bcbad279b13a516c446a75b3c58b6904b45d57a1951411015e50b751a80
+        url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.2.tgz
+        sha256: 749dc54fbd3dcde9e414baae32c177ca84770d3fcd69c8816d579adc3e6a2c99
+        x-checker-data:
+          type: json
+          url: https://registry.npmjs.org/pnpm/latest
+          version-query: .version
+          url-query: .dist.tarball
       - generated-sources.json
       - type: script
         dest-filename: feishin.sh
