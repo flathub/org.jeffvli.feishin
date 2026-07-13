@@ -1,9 +1,9 @@
 app-id: org.jeffvli.feishin
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '25.08'
+base-version: "25.08"
 command: feishin
 separate-locales: false
 
@@ -85,8 +85,8 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
-            commit: bbb3c7f1570a4a021e52683f3fbdf74fe492ae84
-            tag: 0.17.4
+            commit: 4a05d8127f525943ebf45fdc6497c9e665947f0d
+            tag: 0.17.5
         post-install:
           - install -Dm0644 COPYING -t ${FLATPAK_DEST}/share/licenses/${FLATPAK_ID}/libass
   - name: feishin
@@ -95,14 +95,15 @@ modules:
       append-path: /usr/lib/sdk/node24/bin:/run/build/feishin/pnpm/bin
       env:
         XDG_CACHE_HOME: /run/build/feishin/flatpak-node/cache
-        npm_config_store_dir: /run/build/feishin/flatpak-node/pnpm-store
+        PNPM_CONFIG_STORE_DIR: /run/build/feishin/flatpak-node/pnpm-store
         npm_config_nodedir: /usr/lib/sdk/node24
     subdir: main
     build-commands:
       - ln ../pnpm/bin/pnpm.cjs ../pnpm/bin/pnpm
-      - pnpm install --frozen-lockfile --offline
+      - chmod +x ../pnpm/bin/pnpm
+      - pnpm install --frozen-lockfile --offline --config.trustLockfile=true
       - pnpm run build
-      - npx electron-builder --linux dir
+      - npx electron-builder --linux dir --config.electronVersion=41.7.1 --config.electronDist=../flatpak-node/cache/electron
       - |
         build_dir=dist/linux*unpacked
         for i in 128x128 256x256 512x512; do
@@ -120,11 +121,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: b9312d86fd6b086f86cef2a9af42a3ba8ce493bb
-        tag: v1.13.0
+        commit: ad745b36915dd6668d6a2d3e39a5a2be594d12b3
+        tag: v1.14.0
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.13.0/org.jeffvli.feishin.metainfo.xml
-        sha256: 43c2d3494324c6087cc555b8681e99e917dbcfe0315c2725b67eea2b18e568de
+        url: https://github.com/jeffvli/feishin/releases/download/v1.14.0/org.jeffvli.feishin.metainfo.xml
+        sha256: f6b7b52365d3a4448620b05ef9234da4c213073e88d2dcdac053caf5757f4058
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
@@ -133,8 +134,13 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-10.33.0.tgz
-        sha256: bfcc1bcbad279b13a516c446a75b3c58b6904b45d57a1951411015e50b751a80
+        url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.2.tgz
+        sha256: 749dc54fbd3dcde9e414baae32c177ca84770d3fcd69c8816d579adc3e6a2c99
+        x-checker-data:
+          type: json
+          url: https://registry.npmjs.org/pnpm/latest
+          version-query: .version
+          url-query: .dist.tarball
       - generated-sources.json
       - type: script
         dest-filename: feishin.sh
