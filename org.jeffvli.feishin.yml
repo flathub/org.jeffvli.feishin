@@ -1,9 +1,9 @@
 app-id: org.jeffvli.feishin
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: "25.08"
+base-version: '25.08'
 command: feishin
 separate-locales: false
 
@@ -121,11 +121,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: ad745b36915dd6668d6a2d3e39a5a2be594d12b3
-        tag: v1.14.0
+        commit: f8b611fd4c248a7d1f9951c57055d61a9304d9ec
+        tag: v1.15.0
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.14.0/org.jeffvli.feishin.metainfo.xml
-        sha256: f6b7b52365d3a4448620b05ef9234da4c213073e88d2dcdac053caf5757f4058
+        url: https://github.com/jeffvli/feishin/releases/download/v1.15.0/org.jeffvli.feishin.metainfo.xml
+        sha256: 22d29bef3512fd6c66ad9692950e0361b28902b77e8cf915133776cc80a05dac
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
@@ -134,8 +134,8 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.2.tgz
-        sha256: 749dc54fbd3dcde9e414baae32c177ca84770d3fcd69c8816d579adc3e6a2c99
+        url: https://registry.npmjs.org/pnpm/-/pnpm-11.15.0.tgz
+        sha256: 772f8e00f719afbbe22502717cf974578804630d02e757eb3debbc08a0f8f83a
         x-checker-data:
           type: json
           url: https://registry.npmjs.org/pnpm/latest
