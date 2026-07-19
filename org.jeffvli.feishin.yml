@@ -134,13 +134,8 @@ modules:
           url-query: .assets[] | select(.name == "org.jeffvli.feishin.metainfo.xml") | .browser_download_url
       - type: archive
         dest: pnpm
-        url: https://registry.npmjs.org/pnpm/-/pnpm-11.15.0.tgz
-        sha256: 772f8e00f719afbbe22502717cf974578804630d02e757eb3debbc08a0f8f83a
-        x-checker-data:
-          type: json
-          url: https://registry.npmjs.org/pnpm/latest
-          version-query: .version
-          url-query: .dist.tarball
+        url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.2.tgz
+        sha256: 749dc54fbd3dcde9e414baae32c177ca84770d3fcd69c8816d579adc3e6a2c99
       - generated-sources.json
       - type: script
         dest-filename: feishin.sh
