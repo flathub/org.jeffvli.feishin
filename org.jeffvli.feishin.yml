@@ -103,7 +103,7 @@ modules:
       - chmod +x ../pnpm/bin/pnpm
       - pnpm install --frozen-lockfile --offline --config.trustLockfile=true
       - pnpm run build
-      - npx electron-builder --linux dir --config.electronVersion=41.7.1 --config.electronDist=../flatpak-node/cache/electron
+      - npx electron-builder --linux dir --config.electronVersion=41.7.2 --config.electronDist=../flatpak-node/cache/electron
       - |
         build_dir=dist/linux*unpacked
         for i in 128x128 256x256 512x512; do
