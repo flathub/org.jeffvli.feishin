@@ -1,9 +1,9 @@
 app-id: org.jeffvli.feishin
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: "25.08"
+base-version: '25.08'
 command: feishin
 separate-locales: false
 
@@ -103,7 +103,7 @@ modules:
       - chmod +x ../pnpm/bin/pnpm
       - pnpm install --frozen-lockfile --offline --config.trustLockfile=true
       - pnpm run build
-      - npx electron-builder --linux dir --config.electronVersion=41.7.1 --config.electronDist=../flatpak-node/cache/electron
+      - npx electron-builder --linux dir --config.electronVersion=41.7.2 --config.electronDist=../flatpak-node/cache/electron
       - |
         build_dir=dist/linux*unpacked
         for i in 128x128 256x256 512x512; do
@@ -121,11 +121,11 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-        commit: ad745b36915dd6668d6a2d3e39a5a2be594d12b3
-        tag: v1.14.0
+        commit: e62242824d8a6edcc43b5c3e83424496eaad3ca4
+        tag: v1.15.1
       - type: file
-        url: https://github.com/jeffvli/feishin/releases/download/v1.14.0/org.jeffvli.feishin.metainfo.xml
-        sha256: f6b7b52365d3a4448620b05ef9234da4c213073e88d2dcdac053caf5757f4058
+        url: https://github.com/jeffvli/feishin/releases/download/v1.15.1/org.jeffvli.feishin.metainfo.xml
+        sha256: 8471df3c61169d68ede0d8518bdf3e6eacf931a5524ccd662e1f5b30950ce18f
         x-checker-data:
           type: json
           url: https://api.github.com/repos/jeffvli/feishin/releases/latest
@@ -136,11 +136,6 @@ modules:
         dest: pnpm
         url: https://registry.npmjs.org/pnpm/-/pnpm-11.5.2.tgz
         sha256: 749dc54fbd3dcde9e414baae32c177ca84770d3fcd69c8816d579adc3e6a2c99
-        x-checker-data:
-          type: json
-          url: https://registry.npmjs.org/pnpm/latest
-          version-query: .version
-          url-query: .dist.tarball
       - generated-sources.json
       - type: script
         dest-filename: feishin.sh
